@@ -1,0 +1,23 @@
+Phase 1: 
+Environment Setup & Initial Data IngestionThe project begins with setting up the Python environment using core data science libraries, including Pandas, NumPy, Scikit-Learn, Matplotlib, and Seaborn. The raw dataset—comprising 2,000 course batch-level records—is loaded into a Pandas DataFrame. Initial data integrity checks are immediately performed to inspect column data types and confirm that the dataset contains zero missing values and no duplicate entries.  
+
+🔍 Phase 2: 
+Exploratory Data Analysis (EDA) & Feature DistributionNext, comprehensive Exploratory Data Analysis is conducted to uncover hidden patterns and understand feature behavior. Univariate visualizations, such as histograms and boxplots, are generated to analyze feature distributions and spot potential outliers. Additionally, correlation heatmaps are constructed to evaluate relationships between student learning outcomes, engagement metrics, and feedback ratings. Workload analysis confirms that instructors teach multiple batches ($\mu \approx 16.7$), validating the need to aggregate the data to the instructor level.  
+
+📊 Phase 3: 
+Batch-to-Instructor Data AggregationTo evaluate instructor-level performance rather than individual batch anomalies, the dataset is aggregated across all 120 unique instructors. By grouping records by instructor_id, mean values are computed for all outcome, engagement, and feedback metrics. Additionally, a count aggregation is performed on batch IDs to engineer a new workload feature (total_batches), capturing total teaching experience per instructor.  
+
+🧮 Phase 4: 
+Target Engineering & Tier DefinitionA domain-justified composite Instructor Effectiveness Score is formulated using a weighted formula that rewards positive student outcomes (completion rates, score improvements, quiz performance, watch time, submission rates, feedback, and forum activity) while penalizing negative churn (dropout rates). Using the 33rd and 66th percentiles as cutoff thresholds, instructors are categorized into three perfectly balanced performance tiers: Low, Medium, and High.  
+
+⚙️ Phase 5: 
+Pipeline Design & Data PreprocessingThe feature matrix ($X$) is separated from the target variable (y), and an 80/20 stratified train-test split is executed to preserve class proportions across training ($N=96$) and testing (N=24) sets. To prevent data leakage, feature scaling using StandardScaler is fitted strictly on the training set and subsequently used to transform the holdout test set.  
+
+🏆 Phase 6:
+Multi-Model Training, Accuracy & Performance BenchmarkingSix multi-class classification models are trained and benchmarked on the holdout test set:  Random Forest Classifier: 95.8% Accuracy | 0.958 F1-Score (Top Performer)  Decision Tree Classifier: 91.7% Accuracy | 0.915 F1-Score  Logistic Regression: 91.7% Accuracy | 0.913 F1-Score  Support Vector Machine (SVM): 83.3% Accuracy | 0.830 F1-Score  K-Nearest Neighbors (KNN): 83.3% Accuracy | 0.830 F1-Score  Gaussian Naive Bayes: 79.2% Accuracy | 0.794 F1-Score  Evaluation metrics include Accuracy, Precision, Recall, F1-Score, and confusion matrices. The Random Forest Classifier emerges as the top model, achieving a 95.8% Accuracy due to its superior ability to capture complex, non-linear feature interactions.  
+
+💾 Phase 7: 
+Model Serialization & Asset PreservationTo ensure reproducibility and enable seamless future deployment without retraining, the top-performing Random Forest model (95.8% accuracy) and the fitted feature scaler are serialized using joblib. The exported binary files (random_forest_model.pkl and scaler.pkl) are stored in the project directory for instant inference API integration.  
+
+Phase 8: 
+Interpretability, Limitations & Ethical GovernanceFeature importance extraction reveals that completion rates, score improvements, and dropout rates are the strongest drivers of instructor success. The high model accuracy (95.8%) is critically analyzed alongside potential real-world failure modes, such as course difficulty bias and metric-gaming risks. Ethical guidelines are established, strongly recommending that the model serve as an internal diagnostic tool for targeted instructor coaching rather than an automated system for high-stakes HR evaluations.
