@@ -91,6 +91,74 @@ Evaluation conducted on holdout test set ($N=24$):
 
 ---
 
+---
+
+## 🚀 Live Demo
+
+The Instructor Effectiveness Prediction System has been successfully deployed using **Render** and can be accessed through the following link:
+
+🔗 **Live Application:** https://instructor-effectiveness-ml.onrender.com
+
+The web application enables users to:
+
+- Enter instructor performance metrics through a user-friendly interface.
+- Automatically preprocess the input using the trained StandardScaler.
+- Predict the Instructor Effectiveness Tier using the deployed Random Forest Classifier.
+- Display prediction results instantly without requiring any local setup.
+
+---
+
+## 🌐 Deployment
+
+The project is deployed as a production-ready Flask web application.
+
+### Technology Stack
+
+- **Backend:** Flask
+- **Machine Learning:** Scikit-learn
+- **Frontend:** HTML5, CSS3
+- **Model Serialization:** Joblib
+- **Deployment Platform:** Render
+- **Version Control:** Git & GitHub
+
+### Deployment Workflow
+
+```
+Jupyter Notebook
+        │
+        ▼
+Train Random Forest Model
+        │
+        ▼
+Save Model & Scaler (.pkl)
+        │
+        ▼
+Flask Backend
+        │
+        ▼
+HTML + CSS User Interface
+        │
+        ▼
+GitHub Repository
+        │
+        ▼
+Render Cloud Deployment
+        │
+        ▼
+Live Prediction Web Application
+```
+
+### Deployment Features
+
+- End-to-end Machine Learning pipeline
+- Real-time prediction through a web interface
+- Automatic feature scaling before inference
+- Serialized model loading using Joblib
+- Cloud-hosted application accessible from any device
+- Production-ready project structure with Flask
+
+---
+
 ## 📂 Repository Structure
 
 ```text
