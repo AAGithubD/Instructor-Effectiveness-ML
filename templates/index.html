@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Instructor Effectiveness Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>Instructor Effectiveness Prediction</h1>
+
+            <p>
+                Predict Instructor Effectiveness using Machine Learning based on
+                learner outcome, engagement and feedback metrics.
+            </p>
+
+        </div>
+
+        <form action="/predict" method="POST">
+
+            <div class="grid">
+
+                <div class="input-box">
+                    <label>Completion Rate</label>
+                    <input
+                        type="number"
+                        name="completion_rate"
+                        step="any"
+                        min="0"
+                        max="1"
+                        placeholder="0.85"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Dropout Rate</label>
+                    <input
+                        type="number"
+                        name="dropout_rate"
+                        step="any"
+                        min="0"
+                        max="1"
+                        placeholder="0.10"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Average Score Improvement</label>
+                    <input
+                        type="number"
+                        name="avg_score_improvement"
+                        step="any"
+                        placeholder="25"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Average Quiz Score</label>
+                    <input
+                        type="number"
+                        name="avg_quiz_score"
+                        step="any"
+                        placeholder="82"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Average Watch Time</label>
+                    <input
+                        type="number"
+                        name="avg_watch_time"
+                        step="any"
+                        min="0"
+                        max="1"
+                        placeholder="0.90"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Assignment Submission Rate</label>
+                    <input
+                        type="number"
+                        name="assignment_submission_rate"
+                        step="any"
+                        min="0"
+                        max="1"
+                        placeholder="0.95"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Forum Activity Rate</label>
+                    <input
+                        type="number"
+                        name="forum_activity_rate"
+                        step="any"
+                        min="0"
+                        max="1"
+                        placeholder="0.40"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Average Feedback Score</label>
+                    <input
+                        type="number"
+                        name="avg_feedback_score"
+                        step="any"
+                        min="1"
+                        max="5"
+                        placeholder="4.7"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label>Feedback Response Rate</label>
+                    <input
+                        type="number"
+                        name="feedback_response_rate"
+                        step="any"
+                        min="0"
+                        max="1"
+                        placeholder="0.80"
+                        required>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button type="submit">
+                    Predict
+                </button>
+
+                <button type="reset" class="reset-btn">
+                    Reset
+                </button>
+
+            </div>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result">
+
+            <h2>Prediction Result</h2>
+
+            <h1>{{ prediction }}</h1>
+
+        </div>
+
+        {% endif %}
+
+        <div class="footer">
+
+            <p>
+                Built using Flask, Scikit-Learn and Random Forest Classifier
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
