@@ -4,6 +4,12 @@
 [![Scikit-Learn](https://img.shields.io/badge/Library-Scikit--Learn-orange.svg)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+## 🔗 Project Links
+
+- 🌐 Live Demo: https://instructor-effectiveness-ml.onrender.com
+- 💻 GitHub Repository: https://github.com/AAGithubD/Instructor-Effectiveness-ML
+
+  
 An end-to-end Machine Learning pipeline built for an **EdTech Platform** to quantify, evaluate, and predict **Instructor Effectiveness Tiers** (`High`, `Medium`, `Low`) based on student outcome performance, engagement rates, and survey feedback metrics.
 
 ---
