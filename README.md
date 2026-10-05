@@ -21,9 +21,6 @@ An end-to-end Machine Learning pipeline built for an **EdTech Platform** to quan
 - [Model Benchmarking & Results](#-model-benchmarking--results)
 - [Repository Structure](#-repository-structure)
 - [Installation & Setup](#-installation--setup)
-- [How to Run & Predict](#-how-to-run--predict)
-- [Key Business Insights & Governance](#-key-business-insights--governance)
-- [License](#-license)
 
 ---
 
